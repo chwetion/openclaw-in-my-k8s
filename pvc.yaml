@@ -10,3 +10,18 @@ spec:
   resources:
     requests:
       storage: 10Gi
+  storageClassName: longhorn-fast-ssd
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: openclaw-npm-pvc
+  labels:
+    app: openclaw
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 10Gi
+  storageClassName: longhorn-fast-ssd
