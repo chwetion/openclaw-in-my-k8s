@@ -16,6 +16,10 @@ data:
         },
         "controlUi": {
           "enabled": true
+        },
+        "controlUi": {
+          "enabled": true,
+          "allowedOrigins": ["*"]
         }
       },
       "agents": {
