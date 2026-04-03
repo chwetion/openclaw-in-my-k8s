@@ -12,7 +12,8 @@ data:
         "bind": "lan",
         "port": 18789,
         "auth": {
-          "mode": "token"
+          "mode": "token",
+          "token": <AUTH_TOKEN_NEED_CHANGE>
         },
         "controlUi": {
           "enabled": true
