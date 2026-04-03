@@ -5,6 +5,10 @@ metadata:
 spec:
   template:
     spec:
+      securityContext:
+        fsGroup: 1000
+        seccompProfile:
+          type: RuntimeDefault
       containers:
         - name: init-config
           image: registry.cn-hangzhou.aliyuncs.com/amanises/busybox:1.37
