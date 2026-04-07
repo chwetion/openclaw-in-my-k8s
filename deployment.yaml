@@ -23,7 +23,7 @@ spec:
           type: RuntimeDefault
       containers:
         - name: gateway
-          image: registry.cn-hangzhou.aliyuncs.com/amanises/openclaw:slim-v2023.03.22
+          image: registry.cn-hangzhou.aliyuncs.com/amanises/openclaw:slim-v2026.03.22
           imagePullPolicy: Always
           command:
             - node
