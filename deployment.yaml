@@ -22,6 +22,31 @@ spec:
         seccompProfile:
           type: RuntimeDefault
       containers:
+        - name: filebrowser
+          image: registry.cn-hangzhou.aliyuncs.com/amanises/filebrowser:v2.63.2
+          imagePullPolicy: Always
+          ports:
+            - name: http
+              containerPort: 80
+              protocol: TCP
+          args:
+          - --config
+          - /app/filebrowser.json
+          volumeMounts:
+            - name: openclaw-home
+              mountPath: /data
+            - name: filebrowser-database
+              mountPath: /db
+            - name: filebrowser-config
+              mountPath: /app/filebrowser.json
+              subPath: filebrowser.json
+          resources:
+            requests:
+              memory: 2Gi
+              cpu: "500m"
+            limits:
+              memory: 2Gi
+              cpu: "2"
         - name: gateway
           image: registry.cn-hangzhou.aliyuncs.com/amanises/openclaw:slim-v2026.03.22
           imagePullPolicy: Always
@@ -88,5 +113,14 @@ spec:
         - name: openclaw-npm
           persistentVolumeClaim:
             claimName: openclaw-npm-pvc
+        - name: filebrowser-database
+          persistentVolumeClaim:
+            claimName: filebrowser-database-pvc
         - name: tmp-volume
           emptyDir: {}
+        - name: filebrowser-config
+          configMap:
+            name: filebrowser-config
+            items:
+            - key: "filebrowser.json"
+              path: "filebrowser.json"
